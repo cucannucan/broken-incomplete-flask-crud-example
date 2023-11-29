@@ -126,89 +126,83 @@
   </div>
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script>
-        $(document).ready(function() {
-          // Get all students
-          $.ajax({
-            url: '/default',
-            method: 'GET',
-            success: function(response) {
-              var students = response.Results;
-              for (var i = 0; i < students.length; i++) {
-                var student = students[i];
-                var li = $('<li>' + student.ID + '   -   ' + student.Name + '   -   ' + student.Email + '</li>');
-                li.attr('data-id', student.ID);
-                $('#studentList').append(li);
-              }
-            }
-          });
-    
-          // Add student
-          $('#addStudentButton').on('click', function() {
-            var name = $('#addName').val();
-            var email = $('#addEmail').val();
-    
-            $.ajax({
-              url: '/add',
-              method: 'POST',
-              contentType: 'application/json',
-              data: JSON.stringify({ name: name, email: email }),
-              success: function(response) {
-                if (response.Result === 'Success') {
-                  alert('Student added successfully!');
-                  window.location.reload();
-                } else {
-                  alert('Error adding student: ' + response.Message);
-                }
-              }
-            });
-          });
-    
-          // Update student
-          $('#updateStudentButton').on('click', function() {
-            var id = $('#id').val();
-            var name = $('#updateName').val();
-            var email = $('#updateEmail').val();
-            console.log(id);
-            console.log(name);
-            console.log(email);
-            $.ajax({
-              url: '/update',
-              method: 'PUT',
-              contentType: 'application/json',
-              data: JSON.stringify({ id: id, name: name, email: email }),
-              success: function(response) {
-                if (response.Result == 'Success') {
-                  alert('Student updated successfully!');
-                  window.location.reload();
-                } else {
-                  alert('Error updating student: ' + response.Message);
-                }
-              }
-            });
-          });
-    
-          // Delete student
-          $('#deleteStudentButton').on('click', function() {
-            var name = $('#deleteName').val();
-            console.log(name);
-            $.ajax({
-              url: '/delete',
-              method: 'DELETE',
-              contentType: 'application/json',
-              data: JSON.stringify({ name: name }),
-              success: function(response) {
-                if (response.Result === 'Success') {
-                  alert('Student deleted successfully!');
-                  window.location.reload();
-                } else {
-                  alert('Error deleting student: ' + response.Message);
-                }
-              }
-            });
-          });
-        });
-      </script>
+<script>
+  $(document).ready(function() {
+    // Get all students
+    $.ajax({
+      url: '/default',
+      method: 'GET',
+      success: function(response) {
+        var students = response.Results;
+        for (var i = 0; i < students.length; i++) {
+          var student = students[i];
+          var li = $('<li>' + student.ID + '   -   ' + student.Name + '   -   ' + student.Email + '</li>');
+          li.attr('data-id', student.ID);
+          $('#studentList').append(li);
+        }
+      }
+    });
+
+    // Add student
+    $('#addStudentButton').on('click', function() {
+      var name = $('#addName').val();
+      var email = $('#addEmail').val();
+
+      $.ajax({
+        url: '/add',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ name: name, email: email }),
+        success: function(response) {
+          if (response.Result === 'Success') {
+            alert('Student added successfully!');
+            window.location.reload();
+          }
+        }
+      });
+    });
+
+    // Update student
+    $('#updateStudentButton').on('click', function() {
+      var id = $('#id').val();
+      var name = $('#updateName').val();
+      var email = $('#updateEmail').val();
+      console.log(id);
+      console.log(name);
+      console.log(email);
+      $.ajax({
+        url: '/update',
+        method: 'PUT',
+        contentType: 'application/json',
+        data: JSON.stringify({ id: id, name: name, email: email }),
+        success: function(response) {
+          if (response.Result == 'Success') {
+            alert('Student updated successfully!');
+            window.location.reload();
+          }
+        }
+      });
+    });
+
+    // Delete student
+    $('#deleteStudentButton').on('click', function() {
+      var name = $('#deleteName').val();
+      console.log(name);
+      $.ajax({
+        url: '/delete',
+        method: 'DELETE',
+        contentType: 'application/json',
+        data: JSON.stringify({ name: name }),
+        success: function(response) {
+          if (response.Result === 'Success') {
+            alert('Student deleted successfully!');
+            window.location.reload();
+          }
+        }
+      });
+    });
+  });
+</script>
       </div>
 
   </div>
