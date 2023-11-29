@@ -3,17 +3,12 @@
 <head>
   <title>Student Management</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <style>
-    body {
-      background-color: #FFB6C1 /
-    }
-  </style>
+<body style="background-color: #FFB6C1;">
+
   <div>
 
-    <div>    
+    <div style="background-color: #FFFFFF; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">    
       <h3>Add Student</h3>
       <form id="addStudentForm">
         <label for="addName">Name:</label>
@@ -22,10 +17,11 @@
         <label for="email">Email:</label>
         <input type="email" id="addEmail" name="email">
         <br>
-        <button type="button" id="addStudentButton">Add Student</button>
+        <button type="button" id="addStudentButton" style="background-color: #007bff; color: #fff;">Add Student</button>
       </form>
-      </div>
-      <div>
+    </div>
+
+    <div style="background-color: #FFFFFF; padding: 20px; margin-top: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
       <h3>Update Student</h3>
       <form id="updateStudentForm">
         <label for="studentID">ID:</label>
@@ -37,25 +33,29 @@
         <label for="email">Email:</label>
         <input type="email" id="updateEmail" name="email">
         <br>
-        <button type="button" id="updateStudentButton">Update Student</button>
+        <button type="button" id="updateStudentButton" style="background-color: #28a745; color: #fff;">Update Student</button>
       </form>
-      </div>
-      <div>
+    </div>
+
+    <div style="background-color: #FFFFFF; padding: 20px; margin-top: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
       <h3>Delete Student</h3>
       <form id="deleteStudentForm">
         <label for="name">Name:</label>
         <input type="text" id="deleteName" name="name">
         <br>
-        <button type="button" id="deleteStudentButton">Delete Student</button>
+        <button type="button" id="deleteStudentButton" style="background-color: #dc3545; color: #fff;">Delete Student</button>
       </form>
-      </div>
-    
-      <div>
+    </div>
+
+    <div style="background-color: #FFFFFF; padding: 20px; margin-top: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
       <h3>Student List</h3>
       <h4> Student ID | Student Name | Student Email</h4>
       <ul id="studentList"></ul>
-    
-      <script>
+    </div>
+
+  </div>
+
+  <script>
         $(document).ready(function() {
           // Get all students
           $.ajax({
@@ -138,9 +138,6 @@
           });
         });
       </script>
-      </div>
 
-  </div>
-  
 </body>
 </html>
