@@ -4,7 +4,7 @@ from flask_cors import CORS
 import json
 
 mysql = MySQL()
-app = Flask(__name__)
+app = Flask(_name_)
 CORS(app)
 
 # MySQL Instance configurations
@@ -39,7 +39,7 @@ def add():
         else:
             return '{"Result": "Error"}'
     except Exception as e:
-        return '{"Result": "Error", "Message": "' + str(e) + '"}'
+        return '{"Result": "Error"}'
 
 @app.route("/update", methods=['PUT'])  # Update Student
 def update():
@@ -47,15 +47,13 @@ def update():
     name = request.json.get('name')
     email = request.json.get('email')
     try:
-
-
         query = '''UPDATE students SET studentName = '{}', email = '{}' WHERE studentID = {} ;'''.format(name, email, id)
         print("Received Update Request. ID:", id, "Name:", name, "Email:", email)
         success = execute_query(query)
         print(success)
         return '{"Result": "Success"}'
     except Exception as e:
-        return '{"Result": "Error", "Message": "' + str(e) + '"}'
+        return '{"Result": "Error"}'
 
 @app.route("/delete", methods=['DELETE'])  # Delete Student
 def delete():
@@ -65,9 +63,8 @@ def delete():
         success = execute_query(query)
         print(success)
         return '{"Result": "Success"}'
-
     except Exception as e:
-        return '{"Result": "Error", "Message": "' + str(e) + '"}'
+        return '{"Result": "Error"}'
 
 
 @app.route("/default")  # Default - Show Data
@@ -91,16 +88,12 @@ def read():
         )
         return ret
     except Exception as e:
-        return '{"Result": "Error", "Message": "' + str(e) + '"}'
+        return '{"Result": "Error"}'
     
 @app.route('/')
 def index():
     return render_template('index.html')
 
 
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', port='8080')
-
-
-if __name__ == "__main__":
+if _name_ == "_main_":
     app.run(host='0.0.0.0', port='8080')
